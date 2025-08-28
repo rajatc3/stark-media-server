@@ -1,0 +1,61 @@
+{
+  "name": "ultra-hdr-media-server",
+  "version": "2.0.0",
+  "description": "Ultra 4K HDR Media Server with MKV support and modern UI",
+  "main": "ultra_hdr_media_server.js",
+  "scripts": {
+    "start": "node ultra_hdr_media_server.js",
+    "dev": "node ultra_hdr_media_server.js",
+    "test": "node test_connectivity.js",
+    "transcode": "node transcode_manager.js",
+    "cleanup": "node -e \"require('./transcoder').cleanupCache()\""
+  },
+  "keywords": [
+    "media-server",
+    "4k",
+    "hdr",
+    "streaming",
+    "mkv",
+    "nodejs",
+    "video",
+    "transcoding",
+    "tailwindcss"
+  ],
+  "author": "Stark",
+  "license": "MIT",
+  "dependencies": {
+    "mime-types": "^2.1.35"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "optionalDependencies": {
+    "fluent-ffmpeg": "^2.1.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stark/ultra-hdr-media-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stark/ultra-hdr-media-server/issues"
+  },
+  "homepage": "https://github.com/stark/ultra-hdr-media-server#readme",
+  "config": {
+    "port": 8888,
+    "mediaDir": "/hdd-store/lan_films",
+    "cacheDir": "/tmp/media_cache",
+    "maxCacheAge": 24
+  },
+  "os": [
+    "linux",
+    "darwin",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ]
+}

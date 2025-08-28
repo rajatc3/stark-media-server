@@ -1,0 +1,36 @@
+[Unit]
+Description=Stark Media Server - Ultra 4K HDR Media Server
+Documentation=file:///opt/stark-media-server/README.md
+After=network.target
+
+[Service]
+Type=simple
+User=stark
+Group=stark
+WorkingDirectory=/opt/stark-media-server
+ExecStart=/usr/bin/node /opt/stark-media-server/ultra_hdr_media_server.js
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=stark-media-server
+
+# Security settings
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/opt/stark-media-server /var/cache/stark-media-server /hdd-store/lan_films
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+# Environment
+Environment=NODE_ENV=production
+Environment=PORT=8888
+Environment=MEDIA_DIR=/hdd-store/lan_films
+Environment=CACHE_DIR=/var/cache/stark-media-server
+
+[Install]
+WantedBy=multi-user.target
